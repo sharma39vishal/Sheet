@@ -61,13 +61,13 @@ app.post("/deletequestion", (req, res)=> {
 const PORT=process.env.PORT||9002;
 
 // to deploy
-// if(process.env.NODE_ENV=="production"){
-    // app.use(express.static("build"));
-    // const path = require("path");
-    // app.get("*",(req,res)=>{
-    //     res.sendFile(path.resolve('build','index.html'));
-    // })
-// }
+if(process.env.NODE_ENV=="production"){
+    app.use(express.static("build"));
+    const path = require("path");
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve('build','index.html'));
+    })
+}
 
 app.listen(PORT,() => {
     console.log('Backend was connected at port ',PORT);
